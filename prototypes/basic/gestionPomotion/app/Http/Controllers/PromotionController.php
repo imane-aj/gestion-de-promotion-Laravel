@@ -16,6 +16,14 @@ class PromotionController extends Controller
     public function index()
     {
         //
+        try{
+            $promotion = Promotion::get();
+            return view('promotion.index')->with(['promotion'=>$promotion]);
+        }catch(\Exception $e){
+            dd("General Exception" . $e->getMessage());
+        }catch(\Error $e){
+            dd("php Exception" . $e->getMessage());
+        }
     }
 
     /**
