@@ -18,7 +18,7 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::get();
-        return view('promotion.index')->with(['promotion'=>$promotion]);
+        return view('promotion.index', ['promotion'=>$promotion]);
        
     }
 
@@ -69,7 +69,7 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::findOrFail($id);
-        return view('promotion.edit')->with(['promotion' => $promotion]);
+        return view('promotion.edit', ['promotion' => $promotion]);
     }
 
     /**

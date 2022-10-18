@@ -17,8 +17,7 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::get();
-        return view('promotion.index')->with(['promotion'=>$promotion]);
-       
+        return view('promotion.index', ['promotion'=>$promotion]);
     }
 
     /**
