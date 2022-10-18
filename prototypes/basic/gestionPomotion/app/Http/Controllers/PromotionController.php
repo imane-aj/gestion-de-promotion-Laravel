@@ -16,14 +16,9 @@ class PromotionController extends Controller
     public function index()
     {
         //
-        try{
-            $promotion = Promotion::get();
-            return view('promotion.index')->with(['promotion'=>$promotion]);
-        }catch(\Exception $e){
-            dd("General Exception" . $e->getMessage());
-        }catch(\Error $e){
-            dd("php Exception" . $e->getMessage());
-        }
+        $promotion = Promotion::get();
+        return view('promotion.index')->with(['promotion'=>$promotion]);
+       
     }
 
     /**
@@ -34,13 +29,9 @@ class PromotionController extends Controller
     public function create()
     {
         //
-        try{
-            return view("promotion.add");
-        }catch(\Exception $e){
-            dd("General Exception" . $e->getMessage());
-        }catch(\Error $e){
-            dd("PHP Exception" . $e->getMessage());
-        }
+       
+        return view("promotion.add");
+      
     }
 
     /**
@@ -52,16 +43,10 @@ class PromotionController extends Controller
     public function store(PromotionRequest $request)
     {
         //
-        try{
-            $promotion = Promotion::create([
-                "name" => $request->name
-            ]);
-        }catch(\Exception $e){
-            dd("General exception" . $e->getMessage());
-        }
-        catch(\Error $e){
-            dd("PHP exception" . $e->getMessage());
-        }
+       
+        $promotion = Promotion::create([
+            "name" => $request->name
+        ]);
         return redirect()->back()->with(['success' => 'La promotion a etait ajoute avec succee']);
     }
 

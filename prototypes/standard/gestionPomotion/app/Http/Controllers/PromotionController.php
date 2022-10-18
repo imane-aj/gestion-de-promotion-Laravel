@@ -17,14 +17,9 @@ class PromotionController extends Controller
     public function index()
     {
         //
-        try{
-            $promotion = Promotion::get();
-            return view('promotion.index')->with(['promotion'=>$promotion]);
-        }catch(\Exception $e){
-            dd("General Exception" . $e->getMessage());
-        }catch(\Error $e){
-            dd("php Exception" . $e->getMessage());
-        }
+        $promotion = Promotion::get();
+        return view('promotion.index')->with(['promotion'=>$promotion]);
+      
     }
 
     /**
@@ -35,13 +30,8 @@ class PromotionController extends Controller
     public function create()
     {
         //
-        try{
-            return view("promotion.add");
-        }catch(\Exception $e){
-            dd("General Exception" . $e->getMessage());
-        }catch(\Error $e){
-            dd("PHP Exception" . $e->getMessage());
-        }
+        return view("promotion.add");
+       
     }
 
     /**
@@ -53,16 +43,9 @@ class PromotionController extends Controller
     public function store(PromotionRequest $request)
     {
         //
-        try{
-            $promotion = Promotion::create([
-                "name" => $request->name
-            ]);
-        }catch(\Exception $e){
-            dd("General exception" . $e->getMessage());
-        }
-        catch(\Error $e){
-            dd("PHP exception" . $e->getMessage());
-        }
+        $promotion = Promotion::create([
+            "name" => $request->name
+        ]);
         return redirect()->route('promotion.index')->with(['success' => 'La promotion a etait ajoute avec succee']);
     }
 
@@ -86,16 +69,9 @@ class PromotionController extends Controller
     public function edit($id)
     {
         //
-        try{
-            $promotion = Promotion::findOrFail($id);
-            return view('promotion.edit')->with(['promotion' => $promotion]);
-        }catch(QueryException $e){
-            dd("QueryExpt: " . $e->getMessage());
-        }catch(\Exception $e){
-            dd("QueryExpt: " . $e->getMessage());
-        }catch(\Error $e){
-            dd("QueryExpt: " . $e->getMessage());
-        }
+        $promotion = Promotion::findOrFail($id);
+        return view('promotion.edit')->with(['promotion' => $promotion]);
+      
         
     }
 
@@ -109,13 +85,9 @@ class PromotionController extends Controller
     public function update(PromotionRequest $request, Promotion $promotion)
     {
         //
-        try{
-            $promotion->update([
-                "name" => $request->name
-            ]);
-        }catch(QueryException $e){
-            dd("QueryExpt" . $e->getMessage());
-        }
+        $promotion->update([
+            "name" => $request->name
+        ]);
         return redirect()->route('promotion.index')->with(['success' => 'La promotion a etait modifier']);
     }
 
@@ -128,8 +100,6 @@ class PromotionController extends Controller
     public function destroy(Promotion $promotion)
     {
         //
-        // $promotion = Promotion::findOrFail($id);
-        // dd($promotion);
         $promotion->delete();
         return redirect()->route("promotion.index");
     }
