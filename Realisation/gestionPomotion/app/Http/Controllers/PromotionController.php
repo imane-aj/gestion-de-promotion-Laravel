@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Http\Requests\PromotionRequest;
+use App\Models\Student;
 use Illuminate\Database\QueryException;
 
 class PromotionController extends Controller
@@ -19,7 +20,11 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::get();
-        return view('promotion.index', ['promotion'=>$promotion]);
+        $students = Student::all();
+        return view('promotion.index', [
+            'promotion'=>$promotion,
+            'students'=>$students
+        ]);
        
     }
 
@@ -75,7 +80,11 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::findOrFail($id);
-        return view('promotion.edit', ['promotion' => $promotion]);
+        $students  = Student::where('promoId', $id)->get();
+        return view('promotion.edit', [
+            'promotion' => $promotion,
+            'students'  => $students
+        ]);
     }
 
     /**

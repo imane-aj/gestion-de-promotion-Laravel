@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PromotionController;
 
 /*
@@ -20,7 +21,9 @@ Route::get('/', function () {
 });
 
 Route::resource("/promotion", PromotionController::class);
-// Route::get("/promotion", [SearchController::class, 'index']);
 Route::get("search", [SearchController::class, 'searchPromo']);
 
-Route::group(['prefix'])
+Route::prefix('/student')->group(function(){
+    Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [StudentController::class, 'update'])->name('update');
+});

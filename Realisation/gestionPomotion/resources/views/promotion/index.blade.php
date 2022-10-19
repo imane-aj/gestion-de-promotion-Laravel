@@ -58,7 +58,7 @@
                         <div class="col-md-6">
                             <div class="studentCount">
                                 <i class="fa-solid fa-users"></i>
-                                <p>Total Etudients <span>100</span></p>
+                                <p>Total Etudients <span>{{$students->count()}}</span></p>
                             </div>
                         </div>
                     </div>
