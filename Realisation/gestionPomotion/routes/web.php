@@ -23,7 +23,12 @@ Route::get('/', function () {
 Route::resource("/promotion", PromotionController::class);
 Route::get("search", [SearchController::class, 'searchPromo']);
 
-Route::prefix('/student')->group(function(){
-    Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
-    Route::put('/update/{id}', [StudentController::class, 'update'])->name('update');
+Route::controller(StudentController::class)
+    ->prefix('/student')
+    ->as('student.')->group(function(){
+    Route::get('/create/{id}','create')->name('create');
+    Route::post('/create/{id}','store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/edit/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
 });

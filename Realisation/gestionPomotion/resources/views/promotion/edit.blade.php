@@ -26,6 +26,18 @@
         <p class="text-danger">{{$message}}</p>
     @enderror
 </form>
+
+<div class="row">
+    <div class="col-sm-8">
+        <a href="{{route('student.create', ['id' => $promotion->id])}}" class='addRoute'>Ajouter Student</a>
+    </div>
+    <div class="col-sm-4">
+        <div class="search-box">
+            <i class="material-icons">&#xE8B6;</i>
+            <input type="text" class="form-control" placeholder="Search&hellip;" id="search">
+        </div>
+    </div>
+</div>
 <table class="table table-striped table-hover table-bordered promotion">
     <thead>
         <tr>
@@ -42,12 +54,13 @@
             <td>{{$value->lastName}}</td>
             <td>{{$value->email}}</td>
             <td>
-                <a href="{{route('edit', $value->id)}}"  class="edit"><i class="material-icons">&#xE254;</i></a>
-                <form method="post" action="{{route('promotion.destroy',$value->id)}}">
+                <a href="{{route('student.edit', $value->id)}}"  class="edit"><i class="material-icons">&#xE254;</i></a>
+                <form method="post" action="{{route('student.destroy',$value->id)}}">
                     @method('delete')
                     @csrf
                     <button type="submit" class="delete"><i class="material-icons">&#xE872;</i></button>
                 </form>
+                {{-- <a href="{{route('student.destroy', $value->id)}}"  class="edit"> <button>delete</button></a> --}}
             </td>
         </tr>
         @endforeach

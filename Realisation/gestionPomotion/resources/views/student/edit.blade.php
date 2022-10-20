@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('update', $student->id)}}" method="post" class='edit'>
+<form action="{{route('student.update', $student->id)}}" method="post" class='edit'>
     @csrf
     @method('PUT')
     <div class="input-group mb-3">

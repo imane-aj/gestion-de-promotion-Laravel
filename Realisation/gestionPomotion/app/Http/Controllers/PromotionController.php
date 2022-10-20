@@ -6,6 +6,7 @@ use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Http\Requests\PromotionRequest;
 use App\Models\Student;
+use GuzzleHttp\Promise\Promise;
 use Illuminate\Database\QueryException;
 
 class PromotionController extends Controller
@@ -48,10 +49,10 @@ class PromotionController extends Controller
     public function store(PromotionRequest $request)
     {
         //
-        
         $promotion = Promotion::create([
             "name" => $request->name
         ]);
+        
         if($promotion){
             return redirect()->route('promotion.index')->with(['true' => 'La promotion a etait ajoute avec succés']);
         }else{
@@ -67,7 +68,9 @@ class PromotionController extends Controller
      */
     public function show($id)
     {
-        //
+        // //
+        // $promotion = Promotion::findOrFail($id);
+        // return view('student.add', ['promotion', $promotion]);
     }
 
     /**
@@ -78,7 +81,7 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 
         $promotion = Promotion::findOrFail($id);
         $students  = Student::where('promoId', $id)->get();
         return view('promotion.edit', [
@@ -94,9 +97,10 @@ class PromotionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PromotionRequest $request, Promotion $promotion)
+    public function update(PromotionRequest $request,$id)
     {
-        //
+        dd($id);
+        $promotion = Promotion::findOrFail($id);
         $promotion->update([
             "name" => $request->name
         ]);
@@ -116,6 +120,7 @@ class PromotionController extends Controller
     public function destroy(Promotion $promotion)
     {
         //
+        $promotion = $promotion->first();
         $promotion->delete();
         return redirect()->route("promotion.index");
     }

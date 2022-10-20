@@ -25,7 +25,7 @@ class PromotionRequest extends FormRequest
     {
         return [
             //
-            "name" => "required|unique:promotions,name"
+            "name" => "required|max:15"
         ];
     }
 }

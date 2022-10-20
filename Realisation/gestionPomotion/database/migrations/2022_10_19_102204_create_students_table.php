@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->bigInteger('promoId')->unsigned();
             $table->foreign('promoId')->references('id')->on('promotions')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
