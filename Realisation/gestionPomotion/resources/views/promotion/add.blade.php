@@ -1,15 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
-    <div class="col-sm-8">
-        <p class='title'>Ajouter promotion</p>
-    </div>
-    <div class="col-sm-4">
-        <div class="search-box">
-            <a href="{{route('promotion.index')}}" class='addRoute'>Retourner au Tableau d'affichage</a>
-        </div>
-    </div>
-</div>
+
 <form action="{{route('promotion.store')}}" method="post" class="add">
     @csrf
     <div class="input-group mb-3">

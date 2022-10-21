@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Promotion;
 use Illuminate\Http\Request;
-use App\Http\Requests\PromotionRequest;
 
 class PromotionController extends Controller
 {
@@ -16,8 +15,8 @@ class PromotionController extends Controller
     public function index()
     {
         //
-        $promotion = Promotion::get();
-        return view('promotion.index', ['promotion'=>$promotion]);
+        $promotion = Promotion::all();
+        return view('promotion.index', ['promotion'=> $promotion]);
     }
 
     /**
@@ -28,9 +27,7 @@ class PromotionController extends Controller
     public function create()
     {
         //
-       
-        return view("promotion.add");
-      
+        return view('promotion.create');
     }
 
     /**
@@ -39,14 +36,13 @@ class PromotionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PromotionRequest $request)
+    public function store(Request $request)
     {
         //
-       
         $promotion = Promotion::create([
-            "name" => $request->name
+            'name' => $request->name
         ]);
-        return to_route('promotion.index')->with(['success' => 'La promotion a etait ajoute avec succee']);
+        return redirect()->route('promotion.index');
     }
 
     /**
@@ -69,6 +65,9 @@ class PromotionController extends Controller
     public function edit($id)
     {
         //
+        $promotion = Promotion::findOrFail($id);
+        // dd($promotion);
+        return view('promotion.edit', ['prm'=>$promotion]);
     }
 
     /**
@@ -81,6 +80,11 @@ class PromotionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $promotion = Promotion::findOrFail($id);
+        $promotion->update([
+            'name' => $request->name 
+        ]);
+        return redirect()->route('promotion.index');
     }
 
     /**

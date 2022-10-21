@@ -26,8 +26,8 @@ Route::get("search", [SearchController::class, 'searchPromo']);
 Route::controller(StudentController::class)
     ->prefix('/student')
     ->as('student.')->group(function(){
-    Route::get('/create/{id}','create')->name('create');
-    Route::post('/create/{id}','store')->name('store');
+    Route::get('/create/{token}','create')->name('create');
+    Route::post('/create/{token}','store')->name('store');
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::put('/edit/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('destroy');

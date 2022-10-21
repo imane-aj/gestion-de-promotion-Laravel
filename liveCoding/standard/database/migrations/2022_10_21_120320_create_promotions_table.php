@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('token');
-            $table->string('name')->unique();
-            $table->softDeletes();
+            $table->string('name');
             $table->timestamps();
         });
     }

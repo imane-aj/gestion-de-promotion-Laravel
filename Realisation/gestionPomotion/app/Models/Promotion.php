@@ -11,7 +11,7 @@ class Promotion extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'promotions';
-    protected $fillable = ["name"];
+    protected $fillable = ["name", 'token'];
 
     public function students(){
         $this->hasMany(Student::class);

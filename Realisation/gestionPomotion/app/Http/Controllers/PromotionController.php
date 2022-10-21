@@ -8,6 +8,7 @@ use App\Http\Requests\PromotionRequest;
 use App\Models\Student;
 use GuzzleHttp\Promise\Promise;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Str;
 
 class PromotionController extends Controller
 {
@@ -20,13 +21,7 @@ class PromotionController extends Controller
     public function index()
     {
         //
-        $promotion = Promotion::get();
-        $students = Student::all();
-        return view('promotion.index', [
-            'promotion'=>$promotion,
-            'students'=>$students
-        ]);
-       
+        return view('promotion.index');
     }
 
     /**
@@ -50,7 +45,8 @@ class PromotionController extends Controller
     {
         //
         $promotion = Promotion::create([
-            "name" => $request->name
+            "name"  => $request->name,
+            'token' => Str::random()
         ]);
         
         if($promotion){
@@ -69,8 +65,6 @@ class PromotionController extends Controller
     public function show($id)
     {
         // //
-        // $promotion = Promotion::findOrFail($id);
-        // return view('student.add', ['promotion', $promotion]);
     }
 
     /**
@@ -79,14 +73,14 @@ class PromotionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($token)
     {
         // 
-        $promotion = Promotion::findOrFail($id);
-        $students  = Student::where('promoId', $id)->get();
+        $promotion = Promotion::where('token', $token)->firstOrFail();
+        $studentPromo  = Student::where('promoToken', $promotion->token)->get();
         return view('promotion.edit', [
             'promotion' => $promotion,
-            'students'  => $students
+            'studentPromo'  => $studentPromo
         ]);
     }
 
@@ -97,15 +91,16 @@ class PromotionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PromotionRequest $request,$id)
+    public function update(PromotionRequest $request,$token)
     {
-        dd($id);
-        $promotion = Promotion::findOrFail($id);
+        // dd($token);
+        $promotion = Promotion::where('token', $token)->first();
         $promotion->update([
-            "name" => $request->name
+            "name" => $request->name,
+            "token" => Str::random()
         ]);
         if($promotion){
-            return redirect()->route('promotion.index')->with(['true' => 'La promotion à été modifié avec succés']);
+            return redirect()->route('promotion.edit', $promotion->token)->with(['true' => 'La promotion à été modifié avec succés']);
         }else{
             return back()->with(['false' => "Vérifier votre validation ou votre Connection"]);
         }

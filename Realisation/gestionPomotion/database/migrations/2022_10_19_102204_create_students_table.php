@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastName');
             $table->string('email')->unique();
-            $table->bigInteger('promoId')->unsigned();
-            $table->foreign('promoId')->references('id')->on('promotions')->onDelete('cascade');
+            $table->string('promoToken');
+            // $table->foreign('promoToken')->references('token')->on('promotions')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

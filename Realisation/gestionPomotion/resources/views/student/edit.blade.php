@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-4">
         <div class="search-box">
-            <a href="{{route('promotion.edit', $student->promoId)}}" class='addRoute'>Retourner au Tableau d'affichage</a>
+            <a href="{{route('promotion.edit', $student->promoToken)}}" class='addRoute'>Retourner au Tableau d'affichage</a>
         </div>
     </div>
 </div>

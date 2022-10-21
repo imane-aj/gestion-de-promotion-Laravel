@@ -4,7 +4,7 @@
 
 
             <div class="row">
-                <div class="col-md-6">
+                {{-- <div class="col-md-6"> --}}
                     <div class="table-title">
                         <div class="row">
                             @if (Session::has('true'))
@@ -13,7 +13,9 @@
                                 </div>
                             @endif
                             <div class="col-sm-8">
-                                <a href="{{route('promotion.create')}}" class='addRoute'>Ajouter promotion</a>
+                                <div class="follow">
+                                    <a class="btn btn-shadow" href="{{route('promotion.create')}}"><i class="la la-user-plus"></i>Ajouter Promotion</a>
+                                </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="search-box">
@@ -26,7 +28,8 @@
                     <table class="table table-striped table-hover table-bordered promotion">
                         <thead>
                             <tr>
-                                <th>Name <i class="fa fa-sort"></i></th>
+                                <th>Name </th>
+                                <th>Totale Apprenants </th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -34,8 +37,9 @@
                             @foreach ($promotion as $value)
                             <tr>
                                 <td>{{$value->name}}</td>
+                                <td>{{DB::table('students')->where('students.promoToken',$value->token)->count()}}</td>
                                 <td>
-                                    <a href="{{route('promotion.edit', $value->id)}}"  class="edit"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{route('promotion.edit', $value->token)}}"  class="edit"><i class="material-icons">&#xE254;</i></a>
                                     <form method="post" action="{{route('promotion.destroy',$value->id)}}">
                                         @method('delete')
                                         @csrf
@@ -46,21 +50,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="promotionCount">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                                <p>Total Promotion <span>{{$promotion->count()}}</span></p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="studentCount">
-                                <i class="fa-solid fa-users"></i>
-                                <p>Total Etudients <span>{{$students->count()}}</span></p>
-                            </div>
-                        </div>
                     </div>
                    
                     

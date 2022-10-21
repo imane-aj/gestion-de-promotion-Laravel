@@ -10,11 +10,8 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     //
-    public function create($id){
-        
-        $id = Promotion::findOrFail($id)->id;
-        // dd($id);
-        return view('student.add', ["id" => $id]);
+    public function create($token){
+        return view('student.add', ["token" => $token]);
     }
 
     public function store(StudentRequest $request){
@@ -22,9 +19,9 @@ class StudentController extends Controller
             'name' => $request->name,
             'lastName' => $request->lastName,
             'email' => $request->email,
-            'promoId' => $request->promoId
+            'promoToken' => $request->promoToken
         ]);
-        return redirect()->route('promotion.edit', $student->promoId);
+        return redirect()->route('promotion.edit', $student->promoToken);
     }
 
     public function edit($id){
@@ -41,7 +38,7 @@ class StudentController extends Controller
             'email' => $request->email,
         ]);
         
-        return redirect()->route('promotion.edit', $student->promoId);
+        return redirect()->route('promotion.edit', $student->promoToken);
     }
 
     public function destroy($id){

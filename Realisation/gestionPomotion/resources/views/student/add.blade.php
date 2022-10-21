@@ -2,15 +2,16 @@
 @section('content')
 <div class="row">
     <div class="col-sm-8">
-        <p class='title'>Ajouter promotion</p>
+        <p class='title'>Ajouter student</p>
     </div>
     <div class="col-sm-4">
         <div class="search-box">
-            <a href="{{route('promotion.edit', $id)}}" class='addRoute'>Retourner au Tableau d'affichage</a>
+            <a href="{{route('promotion.edit', $token)}}" class='addRoute'>Retourner au Tableau d'affichage</a>
         </div>
     </div>
 </div>
-<form action="{{route('student.store', $id)}}" method="post" class="add">
+{{-- {{dd($token)}} --}}
+<form action="{{route('student.store', $token)}}" method="post" class="add">
     @csrf
     <div class="input-group mb-3">
         <input type="text" class="form-control" name="name" placeholder="Nom" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -32,7 +33,7 @@
     @error('email')
       <p class="text-danger">{{$message}}</p>
     @enderror
-    <input type="hidden" name="promoId" value="{{$id}}">
+    <input type="hidden" name="promoToken" value="{{$token}}">
     <button class="input-group-text" id="basic-addon2" type="submit"><i class="fa-solid fa-plus"></i>Ajouter etudient</button>
 </form>
 @endsection

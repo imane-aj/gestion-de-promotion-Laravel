@@ -16,6 +16,47 @@
 </head>
 
 <body>
+    <div class="container-fluid db-social">
+        <div class="jumbotron jumbotron-fluid"></div>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <div class="widget head-profile has-shadow">
+                        <div class="widget-body pb-0">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
+                                    <ul>
+                                        <li>
+                                            <div class="counter">{{$promotion->count()}}</div>
+                                            <div class="heading">Totale Promotion</div>
+                                        </li>
+                                        <li>
+                                            <div class="counter">{{$students->count()}}</div>
+                                            <div class="heading">Totale Apprenants</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xl-4 col-md-4 d-flex justify-content-center">
+                                    <div class="image-default">
+                                        <img class="rounded-circle" src="{{asset('assets/img/jackson-so-_t-l5FFH8VA-unsplash.jpg')}}" alt="...">
+                                    </div>
+                                    <div class="infos">
+                                        <h2>Gestion des promotions</h2>
+                                        <div class="location">Morocco, Tanger, S.C.</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center">
+                                    <div class="follow">
+                                        <a class="btn btn-shadow" href="{{route('promotion.index')}}"><i class="la la-user-plus"></i>ACCUEILLE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="col py-3">
             <div class="container">
