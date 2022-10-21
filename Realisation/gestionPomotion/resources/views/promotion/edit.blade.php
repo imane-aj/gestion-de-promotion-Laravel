@@ -51,12 +51,8 @@
             <td>{{$value->lastName}}</td>
             <td>{{$value->email}}</td>
             <td>
-                <a href="{{route('student.edit', $value->id)}}"  class="edit"><i class="material-icons">&#xE254;</i></a>
-                <form method="post" action="{{route('student.destroy',$value->id)}}">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="delete"><i class="material-icons">&#xE872;</i></button>
-                </form>
+                <a href=""  class="edit"><i class="material-icons">&#xE254;</i></a>
+                
             </td>
         </tr>
         @endforeach
@@ -70,12 +66,19 @@
                 <div class="card-body">
                     <div class="dropdown float-end">
                         <a class="text-muted dropdown-toggle font-size-16" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="#">Edit</a><a class="dropdown-item" href="#">Remove</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="{{route('student.edit', $value->id)}}"> Edit</a>
+                            <span class="dropdown-item"><form method="post" action="{{route('student.destroy',$value->id)}}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="delete" style="background: unset;border: unset;padding: 0;"> Delete</button>
+                                </form>
+                            </span>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="img"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md rounded-circle img-thumbnail" /></div>
                         <div class="flex-1 ms-3">
-                            <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Phyllis Gatlin</a></h5>
+                            {{-- <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">Phyllis Gatlin</a></h5> --}}
                         </div>
                     </div>
                     <div class="mt-3 pt-1 info">

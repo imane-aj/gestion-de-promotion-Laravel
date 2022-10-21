@@ -15,17 +15,17 @@ class SearchController extends Controller
     public function searchPromo(Request $request){
         if($request->ajax()){
             
-            $query = $request->get('query');
+            $query = $request->key;
             // dd($query);
-            if(!empty($query)){
                 $output = '';
                 $promotions = Promotion::where('name', 'like', '%' . $query . '%')->get();
                 if($promotions){
                     foreach($promotions as $promotion){
                         $output.='<tr>'.
                         '<td>'.$promotion->name.'</td>'.
-                        '<td> <a href="' .route('promotion.edit',$promotion->id ).'">Edit</a></td>'.
-                        '<td> <form method="post" action="'.route('promotion.destroy',$promotion->id ).'">
+                        '<td>'.$promotion->name.'</td>'.
+                        '<td> <a href="' .route('promotion.edit',$promotion->token ).'">Edit</a>
+                         <form method="post" action="'.route('promotion.destroy',$promotion->id ).'">
                         <input type="hidden" name="_method" value="delete">
                         <input type="hidden" name="_token" value="'. csrf_token() .'">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -35,7 +35,7 @@ class SearchController extends Controller
                     return Response($output);
                 }
             
-            }
+            
         }
     }
 }

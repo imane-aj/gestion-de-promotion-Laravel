@@ -15,6 +15,7 @@ class StudentController extends Controller
     }
 
     public function store(StudentRequest $request){
+        // dd('store');
         $student = Student::create([
             'name' => $request->name,
             'lastName' => $request->lastName,

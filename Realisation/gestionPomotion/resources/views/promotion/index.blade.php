@@ -62,17 +62,14 @@
 <script>
  $('#search').on('keyup',function(){
     $value=$(this).val(); 
-    if($value != ' '){
         $.ajax({
         type : 'get',
         url : 'search',
-        data:{'query':$value},
+        data:{'key':$value},
         success:function(data){
         $('#div').html(data);
     }})
-    }else{
-        $("#div").css("display", "none");
-    }  
+    
     
     }) 
 </script>
