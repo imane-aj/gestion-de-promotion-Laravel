@@ -29,8 +29,8 @@ class AppServiceProvider extends ServiceProvider
         //
         if (! App::runningInConsole()) {
             // 
-            $students = Student::all();
-            $promotion = Promotion::all();
+            $students = Student::orderBy('id','DESC')->get();
+            $promotion = Promotion::orderBy('id','DESC')->get();
             \view()->share([
                 'promotion'=> $promotion,
                 'students' => $students
