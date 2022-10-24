@@ -9,13 +9,14 @@ body {
 }
 .db-social .jumbotron {
   margin: 0;
-  background: url('/assets/img/photo-1535868463750-c78d9543614f.jpg');
+  /* background: url('/assets/img/photo-1535868463750-c78d9543614f.jpg');
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: bottom center;
+  background-attachment: fixed; */
+  /* background-size: cover;
+  background-position: bottom center; */
   color: #fff!important;
-  height: 300px;
+  background-color: #ff00000d;
+  height: 160px;
   position: relative;
   box-shadow: inset 0 0 20px rgba(0,0,0,.3);
   padding: 0;
@@ -325,9 +326,9 @@ background-image: url('/assets/img/HD.jpg');
     margin-top: 2em;
 }
 .add button, .edit button{
-    background: #84d1ff;
-    color: #fff;
-    padding: 8px 53px;
+  background: unset;
+  color: #e63450;
+  padding: 8px 53px;
 }
 .edit button{
   position: absolute;
@@ -383,16 +384,16 @@ thead tr, tbody tr{
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
  }
  .bg-news {
-   background: -webkit-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
-   background: -o-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
-   background: -moz-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
-   background: linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
+   background: -webkit-linear-gradient(70deg, #f2e5e5 40%, #ffffff 40%);
+   background: -o-linear-gradient(70deg, #f2e5e5 40%, #ffffff 40%);
+   background: -moz-linear-gradient(70deg, #f2e5e5 40%, #ffffff 40%);
+   background: linear-gradient(70deg, #f2e5e5 40%, #ffffff 40%);
  }
  .btn-primary{
-  background-image: -webkit-linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
- background-image: -moz- oldlinear-gradient(135deg, #e72d41 0%, #fd8965 100%);
- background-image: -o-linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
- background-image: linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
+  background-image: -webkit-linear-gradient(135deg, #f2e5e5 0%, #fd8965 100%);
+ background-image: -moz- oldlinear-gradient(135deg, #f2e5e5 0%, #fd8965 100%);
+ background-image: -o-linear-gradient(135deg, #f2e5e5 0%, #fd8965 100%);
+ background-image: linear-gradient(135deg, #f2e5e5 0%, #fd8965 100%);
  -webkit-filter: hue-rotate(0deg);
  filter: hue-rotate(0deg);
  border: none !important;
