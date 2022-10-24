@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('token');
             $table->string('name')->unique();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

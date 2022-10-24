@@ -1,32 +1,5 @@
 @extends('layouts.master')
 @section('content')
-    {{-- {{dd($token)}} --}}
-    {{-- <form action="{{route('student.store', $token)}}" method="post" class="add">
-    @csrf
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="name" placeholder="Nom" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    </div>
-    @error('name')
-      <p class="text-danger">{{$message}}</p>
-    @enderror
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="lastName" placeholder="Prénom" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    </div>
-    @error('lastName')
-      <p class="text-danger">{{$message}}</p>
-    @enderror
-
-    <div class="input-group mb-3">
-        <input type="email" class="form-control" name="email" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-    </div>
-    @error('email')
-      <p class="text-danger">{{$message}}</p>
-    @enderror
-    
-    <button class="input-group-text" id="basic-addon2" type="submit"><i class="fa-solid fa-plus"></i>Ajouter etudient</button>
-</form> --}}
-
     <section class="credit-card">
         <div class="card-holder">
             <div class="card-box bg-news">
@@ -80,7 +53,7 @@
                                         </div>
                                         <div class="form-group col-sm-12">
                                             <input type="hidden" name="promoToken" value="{{$token}}">
-                                            <button type="submit" class="btn btn-primary btn-block w-100">Proceed</button>
+                                            <button type="submit" class="btn btn-primary btn-block w-100">Ajouter</button>
                                         </div>
                                 </div>
                             </div>

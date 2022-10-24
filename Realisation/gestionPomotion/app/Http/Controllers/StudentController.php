@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
 use App\Models\Student;
-use App\Models\Promotion;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -22,7 +20,7 @@ class StudentController extends Controller
             'email' => $request->email,
             'promoToken' => $request->promoToken
         ]);
-        return redirect()->route('promotion.edit', $student->promoToken);
+        return redirect()->route('promotion.edit', $student->promoToken)->with('true', 'L"apprenant à été ajouté avec succés');
     }
 
     public function edit($id){
@@ -39,12 +37,13 @@ class StudentController extends Controller
             'email' => $request->email,
         ]);
         
-        return redirect()->route('promotion.edit', $student->promoToken);
+        return redirect()->route('promotion.edit', $student->promoToken)
+        ->with('true', 'L"apprenant à été modifié avec succés');
     }
 
     public function destroy($id){
         $student = Student::findOrFail($id);
         $student->delete();
-        return back();
+        return back()->with('true', 'L"apprenant à été supprimé avec succés');;
     }
 }

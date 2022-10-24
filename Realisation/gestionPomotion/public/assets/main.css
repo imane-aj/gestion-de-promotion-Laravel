@@ -337,6 +337,7 @@ background-image: url('/assets/img/HD.jpg');
   color: #e63450;
   padding: 6px 20px;
   border-radius: 3px !important;
+  z-index: 999;
 }
 thead tr, tbody tr{
   text-align: center;
@@ -382,16 +383,16 @@ thead tr, tbody tr{
    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
  }
  .bg-news {
-   background: -webkit-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
-   background: -o-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
-   background: -moz-linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
-   background: linear-gradient(70deg, #f54d70 40%, #ffffff 40%);
+   background: -webkit-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
+   background: -o-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
+   background: -moz-linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
+   background: linear-gradient(70deg, #e72d41 40%, #ffffff 40%);
  }
  .btn-primary{
-  background-image: -webkit-linear-gradient(315deg, #f54d70 0%, #fd8965 100%);
- background-image: -moz- oldlinear-gradient(315deg, #f54d70 0%, #fd8965 100%);
- background-image: -o-linear-gradient(315deg, #f54d70 0%, #fd8965 100%);
- background-image: linear-gradient(135deg, #f54d70 0%, #fd8965 100%);
+  background-image: -webkit-linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
+ background-image: -moz- oldlinear-gradient(135deg, #e72d41 0%, #fd8965 100%);
+ background-image: -o-linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
+ background-image: linear-gradient(135deg, #e72d41 0%, #fd8965 100%);
  -webkit-filter: hue-rotate(0deg);
  filter: hue-rotate(0deg);
  border: none !important;

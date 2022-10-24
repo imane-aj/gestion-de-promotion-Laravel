@@ -21,7 +21,8 @@ Route::get('/', function () {
 });
 
 Route::resource("/promotion", PromotionController::class);
-Route::get("search", [SearchController::class, 'searchPromo']);
+Route::get("searchPromo", [SearchController::class, 'searchPromo']);
+Route::get("/student/searchStudent", [SearchController::class, 'searchStudent']);
 
 Route::controller(StudentController::class)
     ->prefix('/student')

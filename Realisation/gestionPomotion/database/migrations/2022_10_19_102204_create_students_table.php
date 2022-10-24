@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('promoToken');
             // $table->foreign('promoToken')->references('token')->on('promotions')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

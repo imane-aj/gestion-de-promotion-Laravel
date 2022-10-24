@@ -6,8 +6,6 @@ use App\Models\Promotion;
 use Illuminate\Http\Request;
 use App\Http\Requests\PromotionRequest;
 use App\Models\Student;
-use GuzzleHttp\Promise\Promise;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 
 class PromotionController extends Controller
@@ -50,7 +48,7 @@ class PromotionController extends Controller
         ]);
         
         if($promotion){
-            return redirect()->route('promotion.index')->with(['true' => 'La promotion a etait ajoute avec succés']);
+            return redirect()->route('promotion.index')->with(['true' => 'La promotion à été ajoutée avec succés']);
         }else{
             return redirect()->back()->with(['false' => 'Y a un problem dans l"ajout']);
         }
@@ -117,6 +115,6 @@ class PromotionController extends Controller
         //
         $promotion = $promotion->first();
         $promotion->delete();
-        return redirect()->route("promotion.index");
+        return redirect()->route("promotion.index")->with('true', 'La promotion à été supprimée avec succés');
     }
 }

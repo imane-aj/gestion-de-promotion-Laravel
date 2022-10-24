@@ -5,8 +5,15 @@
         {{Session::get('false')}}
     </div>
 @endif
+@if (Session::has('true'))
+    <div class="alert alert-success" role="alert">
+        {{Session::get('true')}}
+    </div>
+@endif
 <div class="row editProJs">
-    <div class="col-md-6"><form action="{{route('promotion.update', $promotion->token)}}" method="post" class='edit'>
+    <div class="col-md-6">
+        <input type="hidden" id="token" value="{{$promotion->token}}">
+        <form action="{{route('promotion.update', $promotion->token)}}" method="post" class='edit'>
         @csrf
         @method('PUT')
         <div class="input-group mb-3">
@@ -17,7 +24,8 @@
         @error('name')
             <p class="text-danger">{{$message}}</p>
         @enderror
-    </form></div>
+    </form>
+</div>
     <div class="col-md-6">
         <div class="row searchStd editPro">
             <div class="col-sm-8">
@@ -26,40 +34,14 @@
             <div class="col-sm-4">
                 <div class="search-box">
                     <i class="material-icons">&#xE8B6;</i>
-                    <input type="text" class="form-control" placeholder="Search&hellip;" id="search">
+                    <input type="text" class="form-control" placeholder="Search&hellip;" id="searchS">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-{{-- <table class="table table-striped table-hover table-bordered promotion">
-    <thead>
-        <tr>
-            <th>Prénom <i class="fa fa-sort"></i></th>
-            <th>Nom <i class="fa fa-sort"></i></th>
-            <th>Email <i class="fa fa-sort"></i></th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody id="div">
-        @foreach ($students as $value)
-        <tr>
-            <td>{{$value->name}}</td>
-            <td>{{$value->lastName}}</td>
-            <td>{{$value->email}}</td>
-            <td>
-                <a href=""  class="edit"><i class="material-icons">&#xE254;</i></a>
-                
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table> --}}
-
-<div class="row">
+<div class="row" id="div">
     @foreach ($studentPromo as $value)
         <div class="col-xl-3 col-sm-6">
             <div class="card">
@@ -114,6 +96,10 @@
         butn.style.cssText = null;
     }
     butn.style.cssText = 'position: absolute; right: 0; marginTop: 0.5em'
+
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="{{asset('assets/js/studentSearch.js')}}"></script>
 @endsection
 
