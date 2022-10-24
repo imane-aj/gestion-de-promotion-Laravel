@@ -83,23 +83,10 @@
 
 
 
-<script>
-    let input = document.querySelector('.input');
-    let text = document.querySelector('.title');
-    let butn = document.querySelector('.butn');
 
-    input.setAttribute("type", "hidden");
-    
-    function change(){
-        input.setAttribute("type", "text");
-        text.style.display = "none"
-        butn.style.cssText = null;
-    }
-    butn.style.cssText = 'position: absolute; right: 0; marginTop: 0.5em'
-
-</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="{{asset('assets/js/studentSearch.js')}}"></script>
+
 @endsection
 
