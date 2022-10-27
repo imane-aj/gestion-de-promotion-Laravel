@@ -16,4 +16,5 @@ php artisan route:list
 - laravel goto view
 - PHP Namespace Resolver
 - laravel Snippets
+
 [gestion des taches](https://jira.external-share.com/issue/19ee4a13-c6e1-4626-ab51-7fd68e0b400a)
